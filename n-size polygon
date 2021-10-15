@@ -1,0 +1,49 @@
+# A simple code to generate n-size regular polygons.
+
+
+import math
+import turtle
+
+pol = turtle.Turtle()
+
+
+def poligono(n,radius,t):
+    angle = 360/n 
+    '''central angle'''
+   
+    sum_interior_angles = (n-2)*180
+    '''sum of interior angles in the n-size polygon '''
+
+    interior_angle = sum_interior_angles/n
+    '''interior angle for the n-size polygon'''
+    
+    for i in range(n):
+        t.fd(radius)
+        t.lt(180-interior_angle)
+        
+    
+    angle_for_pitagoras = interior_angle/2
+    adyacent = radius/2
+    hypotenuse = adyacent/math.cos((math.pi/180) * angle_for_pitagoras)
+
+    '''this part draws the interior line segments'''
+    for i in range(n-1):
+        t.lt(angle_for_pitagoras)
+        t.fd(hypotenuse)
+        t.lt(180 + angle)
+        t.fd(hypotenuse)
+        t.lt(180 - interior_angle + angle_for_pitagoras)
+    
+    print('central angle = ' + str(angle))
+    print('sum of interior angles = ' + str(sum_interior_angles))
+    print('interior angle = ' + str(interior_angle))
+
+        
+    
+        
+        
+       
+poligono(5,100,pol)
+
+turtle.mainloop()
+
