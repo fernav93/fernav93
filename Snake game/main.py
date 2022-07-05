@@ -122,6 +122,13 @@ class Game:
                 sound = pygame.mixer.Sound("resources/Crash.wav")
                 pygame.mixer.Sound.play(sound)
                 raise 'Game over'
+                
+        #snake colliding with walls
+        
+        if not (0 <= self.snake.x[0] <= 1000 and 0 <= self.snake.y[0] <= 500):
+            sound = pygame.mixer.Sound("resources/Crash.wav")
+            pygame.mixer.Sound.play(sound)
+            raise 'Game over'
         
 
     def play_background_music(self):
